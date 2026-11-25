@@ -7,6 +7,23 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
+## Tooling
+
+- **oxlint** — linting (`.oxlintrc.json`)
+- **oxfmt** — formatting (`.oxfmtrc.json`)
+- **lefthook** — git hooks (`lefthook.yml`)
+
+```sh
+pnpm lint          # check for lint errors
+pnpm lint:fix      # auto-fix lint errors
+pnpm format        # format the project
+pnpm format:check  # verify formatting
+```
+
+Git hooks are installed automatically on `pnpm install` (via the `prepare` script).
+On commit, staged files are linted and formatted; on push, the whole project is
+checked. To install them manually, run `pnpm exec lefthook install`.
+
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).

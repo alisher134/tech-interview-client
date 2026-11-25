@@ -1,0 +1,23 @@
+# Git hooks managed by lefthook.
+# https://lefthook.dev/configuration/
+
+pre-commit:
+  parallel: true
+  commands:
+    oxlint:
+      glob: '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}'
+      run: pnpm exec oxlint --fix --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+    oxfmt:
+      glob: '*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,css,scss,md,mdx,html,vue,svelte,yaml,yml}'
+      run: pnpm exec oxfmt --no-error-on-unmatched-pattern {staged_files}
+      stage_fixed: true
+
+pre-push:
+  commands:
+    format-check:
+      glob: '*'
+      run: pnpm exec oxfmt --check .
+    lint:
+      glob: '*'
+      run: pnpm exec oxlint
