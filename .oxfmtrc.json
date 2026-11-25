@@ -5,7 +5,7 @@
   "singleQuote": true,
   "sortImports": true,
   "sortTailwindcss": {
-    "stylesheet": "src/index.css",
+    "stylesheet": "src/app/index.css",
     "functions": ["cn", "cva", "clsx", "twMerge"]
   },
   "ignorePatterns": ["pnpm-lock.yaml", "public"]
